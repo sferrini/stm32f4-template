@@ -64,12 +64,14 @@ STM_ROOT         =../STM32F4-Discovery_FW_V1.1.0
 # which are not in the current directory
 # (the sources of the standard peripheral library, which we use)
 # see also "info:/make/Selective Search" in Konqueror
+MY_SRC_DIR       = ./src
 STM_SRC_DIR      = $(STM_ROOT)/Libraries/STM32F4xx_StdPeriph_Driver/src
 STM_SRC_DIR     += $(STM_ROOT)/Utilities/STM32F4-Discovery
 STM_STARTUP_DIR += $(STM_ROOT)/Libraries/CMSIS/ST/STM32F4xx/Source/Templates/TrueSTUDIO
 
 # Tell make to look in that folder if it cannot find a source
 # in the current directory
+vpath %.c $(MY_SRC_DIR)
 vpath %.c $(STM_SRC_DIR)
 vpath %.s $(STM_STARTUP_DIR)
 
@@ -79,11 +81,11 @@ vpath %.s $(STM_STARTUP_DIR)
 ################################################################################
 
 # The header files we use are located here
-INC_DIRS  = $(STM_ROOT)/Utilities/STM32F4-Discovery
+INC_DIRS  = ./hearers
+INC_DIRS += $(STM_ROOT)/Utilities/STM32F4-Discovery
 INC_DIRS += $(STM_ROOT)/Libraries/CMSIS/Include
 INC_DIRS += $(STM_ROOT)/Libraries/CMSIS/ST/STM32F4xx/Include
 INC_DIRS += $(STM_ROOT)/Libraries/STM32F4xx_StdPeriph_Driver/inc
-INC_DIRS += .
 
 
 ################################################################################
