@@ -127,6 +127,7 @@ OBJS += $(ASRC:.s=.o)
 #                         SETUP TARGETS                              #
 ######################################################################
 
+TEMP_DIR = ./temp
 OUT_DIR = ./out
 
 .PHONY: all
@@ -135,25 +136,27 @@ all: $(PROJ_NAME).elf
 
 %.o : %.c
 	@echo "[Compiling  ]  $^"
-	@$(CC) -c -o $@ $(INCLUDE) $(DEFS) $(CFLAGS) $^
+	@mkdir -p ${TEMP_DIR}
+	@$(CC) -c -o $(TEMP_DIR)/$@ $(INCLUDE) $(DEFS) $(CFLAGS) $^
 
 %.o : %.s
 	@echo "[Assembling ] $^"
-	@$(AS) $(AFLAGS) $< -o $@
+	@mkdir -p ${TEMP_DIR}
+	@$(AS) $(AFLAGS) $< -o $(TEMP_DIR)/$@
 
 $(PROJ_NAME).elf: $(OBJS)
 	@echo "[Linking    ]  $@"
 	@mkdir -p ${OUT_DIR}
-	@$(CC) $(CFLAGS) $(LFLAGS) $^ -o $(OUT_DIR)/$@
+	@$(CC) $(CFLAGS) $(LFLAGS) $(foreach file, $^, $(TEMP_DIR)/$(file)) -o $(OUT_DIR)/$@
 	@$(OBJCOPY) -O ihex $(OUT_DIR)/$(PROJ_NAME).elf   $(OUT_DIR)/$(PROJ_NAME).hex
 	@$(OBJCOPY) -O binary $(OUT_DIR)/$(PROJ_NAME).elf $(OUT_DIR)/$(PROJ_NAME).bin
 
 clean:
-	@rm -f *.o $(OUT_DIR)/*
+	@rm -f *.o $(OUT_DIR)/* $(TEMP_DIR)/*
 
 flash: all
-	st-flash write $(PROJ_NAME).bin 0x8000000
+	st-flash write $(OUT_DIR)/$(PROJ_NAME).bin 0x8000000
 
 debug:
 # before you start gdb, you must start st-util
-	$(GDB) -tui $(PROJ_NAME).elf
+	$(GDB) -tui $(OUT_DIR)/$(PROJ_NAME).elf
