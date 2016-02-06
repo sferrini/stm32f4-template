@@ -160,8 +160,13 @@ static void flash_all_leds(void)
 int main(void)
 {
     setup_leds();
+    STM_EVAL_PBInit(BUTTON_USER, BUTTON_MODE_GPIO);
+
     while (1)
     {
+
+        while (STM_EVAL_PBGetState(BUTTON_USER) == Bit_SET);
+
         led_round();
         flash_all_leds();
     }
