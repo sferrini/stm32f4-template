@@ -131,13 +131,12 @@ OBJS += $(ASRC:.s=.o)
 
 all: $(PROJ_NAME).elf
 
-
 %.o : %.c
 	@echo "[Compiling  ]  $^"
 	@$(CC) -c -o $@ $(INCLUDE) $(DEFS) $(CFLAGS) $^
 
 %.o : %.s
-	@echo "[Assembling ]" $^
+	@echo "[Assembling ] $^"
 	@$(AS) $(AFLAGS) $< -o $@
 
 
