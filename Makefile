@@ -57,7 +57,7 @@ INC_DIRS += .
 
 # This is the path to the toolchain
 # (we don't put our toolchain on $PATH to keep the system clean)
-TOOLS_DIR = /opt/gcc-arm-embedded/gcc-arm-none-eabi-4_7-2013q1/bin
+TOOLS_DIR = /opt/gcc-arm-embedded/gcc-arm-none-eabi-5_2-2015q4/bin
 
 # The tool we use
 CC      = $(TOOLS_DIR)/arm-none-eabi-gcc
