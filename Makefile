@@ -92,7 +92,7 @@ INC_DIRS += $(STM_ROOT)/Libraries/STM32F4xx_StdPeriph_Driver/inc
 #                   SOURCE FILES TO COMPILE                                    #
 ################################################################################
 
-# My source file
+# My source files
 SRCS   = main.c
 SRCS   += delay.c
 SRCS   += leds.c
@@ -127,6 +127,8 @@ OBJS += $(ASRC:.s=.o)
 #                         SETUP TARGETS                              #
 ######################################################################
 
+OUT_DIR = ./out
+
 .PHONY: all
 
 all: $(PROJ_NAME).elf
@@ -139,15 +141,15 @@ all: $(PROJ_NAME).elf
 	@echo "[Assembling ] $^"
 	@$(AS) $(AFLAGS) $< -o $@
 
-
 $(PROJ_NAME).elf: $(OBJS)
 	@echo "[Linking    ]  $@"
-	@$(CC) $(CFLAGS) $(LFLAGS) $^ -o $@
-	@$(OBJCOPY) -O ihex $(PROJ_NAME).elf   $(PROJ_NAME).hex
-	@$(OBJCOPY) -O binary $(PROJ_NAME).elf $(PROJ_NAME).bin
+	@mkdir -p ${OUT_DIR}
+	@$(CC) $(CFLAGS) $(LFLAGS) $^ -o $(OUT_DIR)/$@
+	@$(OBJCOPY) -O ihex $(OUT_DIR)/$(PROJ_NAME).elf   $(OUT_DIR)/$(PROJ_NAME).hex
+	@$(OBJCOPY) -O binary $(OUT_DIR)/$(PROJ_NAME).elf $(OUT_DIR)/$(PROJ_NAME).bin
 
 clean:
-	rm -f *.o $(PROJ_NAME).elf $(PROJ_NAME).hex $(PROJ_NAME).bin
+	@rm -f *.o $(OUT_DIR)/*
 
 flash: all
 	st-flash write $(PROJ_NAME).bin 0x8000000
