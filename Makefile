@@ -92,6 +92,8 @@ INC_DIRS += .
 
 # My source file
 SRCS   = main.c
+SRCS   += delay.c
+SRCS   += leds.c
 
 # Contains initialisation code and must be compiled into
 # our project. This file is in the current directory and
