@@ -1,7 +1,7 @@
 # STM32F4 OS X Template
 
 
-This is a simple "blinky" example using the Standard Peripheral Library for [STM32F4 Discovery board](http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/PF252419).
+This is a simple "stm32f4-template" example using the Standard Peripheral Library for [STM32F4 Discovery board](http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/PF252419).
 
 ### Files
 
@@ -16,7 +16,7 @@ Here is an overview of the files found in this project:
 
 #### Missing files
 
-This project does not include the peripheral library used to build the program. You can however download the library from ST (see link below). In my setup I have extracted the library in a folder one level above the "blinky" folder.
+This project does not include the peripheral library used to build the program. You can however download the library from ST (see link below). In my setup I have extracted the library in a folder one level above the "stm32f4-template" folder.
 
 ### Tools and software requirements
 
@@ -33,10 +33,10 @@ This project does not include the peripheral library used to build the program. 
 1. Download and install the requirements mentioned above.
 2. Download or clone this repository.
 3. Edit the Makefile if needed.
-4. Open a terminal window and change to the blinky directory.
+4. Open a terminal window and change to the stm32f4-template directory.
 5. Type `make`.
 6. Connect the stm32f4 discovery board to your computer.
-7. If you just want to flash the blinky program, type `make flash`.
+7. If you just want to flash the stm32f4-template program, type `make flash`.
 8. If you want to debug the program:
    1. Start the gdb server included in the stlink package by typing `st-util`. You should start st-util in a separated terminal window so that it does not polute the gdb session.
    2. Type `make debug`. This will start gdb which will read the .gdbinit file and thus connect to localhost port 4242, where st-util is listening. From this point on, st-util will take commands from gdb and control the discovery board.

@@ -1,5 +1,5 @@
 # Name of the binaries.
-PROJ_NAME=blinky
+PROJ_NAME=stm32f4-template
 
 ######################################################################
 #                         SETUP TOOLS                                #
@@ -94,23 +94,11 @@ INC_DIRS += $(STM_ROOT)/Libraries/STM32F4xx_StdPeriph_Driver/inc
 
 # My source files
 SRCS   = main.c
-SRCS   += delay.c
-SRCS   += leds.c
 
 # Contains initialisation code and must be compiled into
 # our project. This file is in the current directory and
 # was writen by ST.
 SRCS  += system_stm32f4xx.c
-
-# These source files implement the functions we use.
-# make finds them by searching the vpath defined above.
-SRCS  += stm32f4xx_rcc.c
-SRCS  += stm32f4xx_gpio.c
-SRCS  += stm32f4xx_tim.c
-SRCS  += misc.c
-SRCS  += stm32f4_discovery.c
-SRCS  += stm32f4xx_syscfg.c
-SRCS  += stm32f4xx_exti.c
 
 # Startup file written by ST
 # The assembly code in this file is the first one to be
