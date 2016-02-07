@@ -1,4 +1,4 @@
-# STM32F4 OS X Template
+# STM32F4 Template
 
 
 This is a simple "stm32f4-template" example using the Standard Peripheral Library for [STM32F4 Discovery board](http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/PF252419).
@@ -22,11 +22,11 @@ This project does not include the peripheral library used to build the program. 
 
 * [GCC ARM Embedded toolchain](https://launchpad.net/gcc-arm-embedded) for ARM Cortex-M. You need this in order to compile and debug your code. You can download pre-built binaries for all major operating systems. After downloading, just extract the archive somewhere (a good place: /opt/gcc-arm-embedded/), no installation is required. The exact location of the extracted folder will be used in the makefile.
 
-* [stlink](https://github.com/texane/stlink) utility written by texane. You need this for flashing the compiled code to the board. It also contains a gdb server used to debug your code on the chip. Install this from the source code or from brew: ```brew install stlink```
+* [stlink](https://github.com/texane/stlink) utility written by texane. You need this for flashing the compiled code to the board. It also contains a gdb server used to debug your code on the chip. Install this from the source code or if you are on OS X, you can do it from brew: ```brew install stlink```
 
 * The [STM32F4DISCOVERY board firmware package](http://www.st.com/web/en/catalog/tools/PF257904). You need this library in order to access and use the board's peripherals. It contains headers and source files which you compile and link together with your own files.
 
-* make. You need this in order to... make this project. make should be pre-installed on all OS X machines.
+* make. You need this in order to... make this project. make should be pre-installed on all Linux and OS X machines.
 
 ### Usage
 
