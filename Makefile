@@ -81,7 +81,7 @@ vpath %.s $(STM_STARTUP_DIR)
 ################################################################################
 
 # The header files we use are located here
-INC_DIRS  = ./hearers
+INC_DIRS  = ./headers
 INC_DIRS += $(STM_ROOT)/Utilities/STM32F4-Discovery
 INC_DIRS += $(STM_ROOT)/Libraries/CMSIS/Include
 INC_DIRS += $(STM_ROOT)/Libraries/CMSIS/ST/STM32F4xx/Include
